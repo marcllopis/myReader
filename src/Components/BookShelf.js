@@ -6,9 +6,12 @@ import '../App.css'
 
 class BookShelf extends Component {
 
-  sadad
-
-
+    constructor(){
+        this.state = {
+            myBooks:[]
+        }
+    }
+asadad
     componentDidMount(){
         BooksAPI.getAll().then((books)=>{
             this.setState({myBooks : books})
