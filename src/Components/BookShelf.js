@@ -5,10 +5,12 @@ import '../App.css'
 
 
 class BookShelf extends Component {
+  constructor(){
 
-    state = {
-        myBooks:[]
-    }
+      state = {
+          myBooks:[]
+      }
+  }
 
     componentDidMount(){
         BooksAPI.getAll().then((books)=>{
