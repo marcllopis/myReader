@@ -12,30 +12,17 @@ class BookLibrary extends Component {
 
     this.state = {
       myBooks: [],
-      myShelfs: [
-        {
-          displayed: "Currently Reading",
-          coded: "currentlyReading"
-        },
-        {
-          displayed: "Want to Read",
-          coded: "wantToRead"
-        },
-        {
-          displayed: "Read",
-          coded: "read"
-        }
-      ]
+      myShelfs: []
     }
   }
 
   componentDidMount() {
-    this.setState({ myBooks: this.props.myBooks })
+    this.setState({ myBooks: this.props.myBooks, myShelfs: this.props.myShelfs })
   }
 
   getSelectValue = (query, id) => {
     BooksAPI.update(id, query).then((res) => {
-      BooksAPI.getAll().then((books) => {
+      BooksAPI.getAll().then((books) => {        
         this.setState({ myBooks: books })
       })
     })
@@ -63,9 +50,7 @@ class BookLibrary extends Component {
                   getSelectValue={this.getSelectValue}
                 />
               )
-
             })}
-
           </div>
         </div>
         <div className="open-search">
@@ -73,7 +58,6 @@ class BookLibrary extends Component {
         </div>
       </div>
     )
-
   }
 }
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 
+
 import BooksSearched from './BooksSearched'
 
 
@@ -48,12 +49,13 @@ class SearchBook extends React.Component {
                                     book={book}
                                     key={book.id}
                                     addBook={this.props.addBook}
+                                    myBooks={this.props.myBooks}
+                                    shelf={this.props.myShelfs}
+                                    searched={this.props.searched}
                                 />
                             )
                         })
-
                         }
-
                     </ol>
                 </div>
             </div>

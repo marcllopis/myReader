@@ -9,7 +9,6 @@ const BookShelf = (props) => (
         <div className="bookshelf-books">
             <ol className="books-grid">
                 {props.myBooks.map((book) => {
-
                     if (book.shelf === props.shelf.coded) {
                         return (
                             <li key={book.title}>
