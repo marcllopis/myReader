@@ -9,7 +9,6 @@ class BookLibrary extends Component {
 
   constructor() {
     super()
-    console.log(this.props);
 
     this.state = {
       myBooks: [],
@@ -35,15 +34,12 @@ class BookLibrary extends Component {
   }
 
   getSelectValue = (query, id) => {
-    if (query !== "none") {
-      BooksAPI.update(id, query).then((res) => {
-        BooksAPI.getAll().then((books) => {
-          this.setState({ myBooks: books })
-        })
+    BooksAPI.update(id, query).then((res) => {
+      BooksAPI.getAll().then((books) => {
+        this.setState({ myBooks: books })
       })
-    } else {
-      console.log("You select nothing");
-    }
+    })
+
   }
 
 
@@ -61,6 +57,7 @@ class BookLibrary extends Component {
               return (
                 <BookShelf
                   shelf={shelf}
+                  myShelfs={this.state.myShelfs}
                   key={shelf.coded}
                   myBooks={this.state.myBooks}
                   getSelectValue={this.getSelectValue}

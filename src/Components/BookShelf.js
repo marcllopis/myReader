@@ -13,7 +13,7 @@ const BookShelf = (props) => (
                     if (book.shelf === props.shelf.coded) {
                         return (
                             <li key={book.title}>
-                                <Book myBook={book} getSelectValue={props.getSelectValue} />
+                                <Book myBook={book} myShelf={props.myShelfs} shelf={props.shelf} getSelectValue={props.getSelectValue} />
                             </li>
                         )
                     }

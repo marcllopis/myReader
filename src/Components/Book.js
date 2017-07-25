@@ -7,12 +7,13 @@ const Book = (props) => (
         <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(' + props.myBook.imageLinks.smallThumbnail + ')' }}></div>
             <div className="book-shelf-changer">
-                <select onChange={(event) => props.getSelectValue(event.target.value, props.myBook.id)}>
+                <select value={props.shelf.displayed} onChange={(event) => props.getSelectValue(event.target.value, props.myBook.id)}>
                     <option value="none" disabled>Move to...</option>
-                    <option value="empty"></option>
-                    <option value="currentlyReading">Currently Reading</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
+                    {props.myShelf.map((shelf, index) => {
+                        return (
+                            <option key={index} value={shelf.displayed}>{shelf.displayed}</option>
+                        )
+                    })}
                     <option value="none">None</option>
                 </select>
             </div>

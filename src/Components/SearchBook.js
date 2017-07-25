@@ -5,8 +5,6 @@ import '../App.css'
 
 import BooksSearched from './BooksSearched'
 
-console.log(BooksAPI.getAll());
-
 
 class SearchBook extends React.Component {
     state = {
@@ -24,7 +22,6 @@ class SearchBook extends React.Component {
     getSearchResult = (query) => {
         this.setState({ searchResult: query })
         BooksAPI.search(query, 3).then((res) => {
-            console.log(res);
             this.setState({ searchedBooks: res })
         })
     }
@@ -45,16 +42,18 @@ class SearchBook extends React.Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {this.state.searchedBooks.map((book)=>{
+                        {this.state.searchedBooks.map((book) => {
                             return (
-                                <BooksSearched book={book}
-                                               key={book.id}
+                                <BooksSearched
+                                    book={book}
+                                    key={book.id}
+                                    addBook={this.props.addBook}
                                 />
                             )
                         })
 
                         }
-                        
+
                     </ol>
                 </div>
             </div>
